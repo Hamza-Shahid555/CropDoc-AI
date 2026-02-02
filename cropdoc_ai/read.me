@@ -1,0 +1,15 @@
+CropDoc: Plant Disease Detection using ResNet-9CropDoc is an intelligent agricultural diagnostic system designed to identify 38 different plant diseases through image analysis.
+By leveraging a custom ResNet-9 architecture, this project provides a high-accuracy, computationally efficient solution for real-time crop health monitoring.
+🏗️ Model ArchitectureThe architecture is specifically designed to handle $256 \times 256$ RGB images, utilizing residual learning to ensure deep feature extraction without
+the risk of vanishing gradients.StageOperationsOutput ShapeInputRGB Image(3, 256, 256)Conv Block 1Conv (3 $\rightarrow$ 64), BatchNorm, ReLU(64, 256, 256)Conv Block 2Conv 
+(64 $\rightarrow$ 128), MaxPool (4x4)(128, 64, 64)Res Block 12 $\times$ [Conv (128), BN, ReLU] + Skip(128, 64, 64)Conv Block 3Conv (128 $\rightarrow$ 256),
+MaxPool (4x4)(256, 16, 16)Conv Block 4Conv (256 $\rightarrow$ 512), MaxPool (4x4)(512, 4, 4)Res Block 22 $\times$ [Conv (512), BN, ReLU] + Skip(512, 4, 4)ClassifierFlatten,
+Fully Connected (512 $\rightarrow$ 38)(38)🚀 Key FeaturesResidual Connections: Improves gradient flow and allows the model to learn complex patterns across 38 classes.
+Optimized Performance: Uses Batch Normalization for faster convergence and higher stability.Scalable: Designed to be lightweight enough for deployment on edge devices or mobile
+apps.Dataset: Trained on the PlantVillage dataset (or your specific dataset).💻 Tech StackLanguage: PythonDeep Learning: PyTorch / torchvisionData Science: NumPy, Pandas,
+MatplotlibImage Processing: OpenCV, PIL📂 Project StructurePlaintext├── data/               # Dataset directory
+├── models/             # Model architecture (resnet9.py)
+├── notebooks/          # Training and Evaluation Jupyters
+├── outputs/            # Saved weights and loss curves
+├── README.md           # Project documentation
+└── requirements.txt    # Dependencies
